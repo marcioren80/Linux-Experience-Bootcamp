@@ -1,0 +1,36 @@
+# Distribuições utilizadas no curso
+
+### Baixando a ISO
+
+Será utilizado inicialmente o Ubuntu Server.
+
+https://ubuntu.com/download/server
+
+Selecionar no site o download da Instalação Manual (Opção 2)
+
+### Baixando o VirtualBox
+
+https://www.virtualbox.org/
+
+[Windows hosts](https://download.virtualbox.org/virtualbox/6.1.36/VirtualBox-6.1.36-152435-Win.exe)
+
+[Linux hosts](https://www.virtualbox.org/wiki/Linux_Downloads)
+
+As máquinas virtuais são computadores de software com a mesma funcionalidade que os computadores físicos. Assim como os computadores físicos, elas executam aplicativos e um sistema operacional. No entanto, as máquinas virtuais são arquivos de computador executados em um computador físico e se comportam como um computador físico.
+
+### Instalando o VirtualBox
+Baixado o instalador no Windows (.exe), next, next, next.
+
+### Criando Máquinas Virtuais
+Verifique se a virtualização está ativa:
+Abra o prompt do DOS no modo Administrador e execute o comando “bcdedit”
+Verifique o item hypervisorlaunchtype se está com status “off”; caso não esteja execute o seguinte:
+
+bcdedit /set hypervisorlaunchtype off
+
+Inicialmente, será criada uma VM com 512MB de RAM, disco de 20GB de espaço dinamicamente alocado, Rede configurada como Modo Bridge.
+
+### Iniciando a Instalação do Ubuntu: 
+ - Seleciona o idioma Português -> Layout -> Português Brasil, Variante -> Português Brasil.
+ - Rede: Não há necessidade de mexer agora.
+
