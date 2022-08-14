@@ -260,16 +260,17 @@ Repare também na alteração no prompt de **"#"** de volta para **"$"**.
 
 ## Liberando acesso remoto do usuário root
 
-Para conseguirmos realizar um acesso remoto ssh diretamente com o usuário root, vamos precisar alterar algumas informações no serviço sshd, que é o serviço responsável pelo acesso ssh.
+<br>
+Para conseguirmos realizar um acesso remoto ssh diretamente com o usuário root, vamos precisar alterar algumas informações no serviço sshd, que é o serviço responsável pelo acesso ssh.<br>
 
 >   marcio@ubuntu-srv-dio:~\$ sudo nano /etc/ssh/sshd_config <br>
 >   [sudo] password for marcio: <br>
 
 Descomentar e Alterar a linha abaixo: <br>
 de <br>
-#PermitRootLogin prohibit-password <br>
+- #PermitRootLogin prohibit-password <br>
 para:  <br>
-PermitRootLogin yes <br>
+- PermitRootLogin yes <br>
 
 <br>
 Salva e reinicia o serviço sshd: 
@@ -284,7 +285,9 @@ O VI é um editor de texto rudimentar e básico para edição de texto no Linux 
 
 Neste curso utilizaremos o NANO, que é um editor um pouco mais "user friendly" que o VI.
 
+<br>
 Comandos básicos do NANO: <br>
+
 - Ctrl+S = Salva.
 - Ctrl+O = Salva com opção de altera o nome do arquivo.
 - Ctrl+X = Sair do Nano.
