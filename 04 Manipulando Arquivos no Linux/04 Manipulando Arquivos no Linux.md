@@ -8,7 +8,7 @@ usuário@nomemaquina:~\$<br>
 
 Os comandos do Linux são Case Sensitive, o que significa que você deve respeitar o uso de letras MAIÚSCULAS e minúsculas.
 
-
+==================================================
 ## Navegando pelo sistema de arquivos
 
 pwd: Comando exibe na tela a pasta atual.
@@ -32,20 +32,11 @@ ls: Lista os arquivos e pastas do diretório.
 
 <br>
 
-Podemos listar arquivos de diferentes diretórios sem precisar sair do diretório atual: <br>
->   marcio@ubuntu-srv-dio:/\$ ls /var <br>
->   backups  cache  crash  lib  local  lock  > log  mail  opt  run  snap  spool  tmp <br>
->   marcio@ubuntu-srv-dio:/\$
-
-
-<br>
-
 Retornar um nível de pasta: <br>
 >   marcio@ubuntu-srv-dio:/var/log$ cd .. <br>
 >   marcio@ubuntu-srv-dio:/var$
 
-<br>
-
+==================================================
 ## Filtrando a exibição de arquivos
 
 Para listar arquivos e pastas de um diretório de forma paginada:
@@ -105,3 +96,217 @@ Exemplo removendo arquivos: <br>
 >   marcio@ubuntu-srv-dio:~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  workspace <br>
 >   marcio@ubuntu-srv-dio:~\$
+
+==================================================
+## Localizando arquivos
+
+Podemos listar arquivos de diferentes diretórios sem precisar sair do diretório atual: <br>
+>   marcio@ubuntu-srv-dio:/\$ ls /var <br>
+>   backups  cache  crash  lib  local  lock  > log  mail  opt  run  snap  spool  tmp <br>
+>   marcio@ubuntu-srv-dio:/\$
+
+<br>
+
+Neste exemplo, ele mostra os arquivos e pastas que iniciam com a letra "s" e exibe o conteúdo do diretório que inicia com "s".
+>   marcio@ubuntu-srv-dio:~\$ ls /sys/kernel/s* <br>
+>   /sys/kernel/security: <br>
+>   apparmor  evm  ima  integrity  lockdown  lsm <br>
+
+<br>
+
+Fazendo uma busca pelo nome do arquivo com find: <br>
+>   marcio@ubuntu-srv-dio:/home\$ find -name arq* <br>
+>   ./marcio/arquivo5.txt <br>
+>   ./marcio/arquivo3.txt <br>
+>   ./marcio/arquivo4.txt <br>
+>   marcio@ubuntu-srv-dio:/home$ <br>
+
+==================================================
+## Criando diretórios
+
+O comando para criar diretórios é o **mkdir**:
+>   marcio@ubuntu-srv-dio:~\$ mkdir Documentos <br>
+>   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   arquivo3.txt  arquivo4.txt  arquivo5.txt  Documentos  workspace <br>
+>   marcio@ubuntu-srv-dio:~\$ <br>
+
+<br>
+
+>   marcio@ubuntu-srv-dio:~\$ mkdir Planilhas <br>
+>   marcio@ubuntu-srv-dio:~\$ cd Planilhas/ <br>
+>   marcio@ubuntu-srv-dio:~/Planilhas$ mkdir Financeiras <br>
+>   marcio@ubuntu-srv-dio:~/Planilhas$ mkdir Escolares <br>
+>   marcio@ubuntu-srv-dio:~/Planilhas$ ls <br>
+>   Escolares       Financeiras <br>
+>   marcio@ubuntu-srv-dio:~/Planilhas$ <br>
+
+<br>
+
+Se for necessário criar uma pasta com nome que tenha espaço, utilize o nome entre aspas simples:
+>   marcio@ubuntu-srv-dio:~\$ mkdir 'Meus Documentos' <br>
+>   marcio@ubuntu-srv-dio:~\$ ls <br>
+>    arquivo3.txt   arquivo4.txt   arquivo5.txt   Documentos  'Meus Documentos'   Planilhas   workspace <br>
+>   marcio@ubuntu-srv-dio:~\$ <br>
+
+==================================================
+## Excluindo arquivos e diretórios
+
+O comando para excluir diretórios é o **rmdir**
+>   marcio@ubuntu-srv-dio:~\$ rmdir 'Meus Documentos'/
+>   marcio@ubuntu-srv-dio:~$
+
+Obs1: a pasta não será excluída se houver arquivos dentro. <br>
+Obs2: O LINUX NÃO PERGUNTA SE VOCÊ TEM CERTEZA QUE DESEJA EXCLUIR, ELE APAGA E PRONTO, ENTÃO TENHA CUIDADO!
+
+O Linux reclama se você tentar apagar um diretório com arquivos dentro:
+>   marcio@ubuntu-srv-dio:~\$ rmdir Documentos/ <br>
+>   rmdir: failed to remove 'Documentos/': Directory not empty <br>
+>   marcio@ubuntu-srv-dio:~$
+
+Sendo assim, utilize:
+>   marcio@ubuntu-srv-dio:~\$ **rm -rf** Documentos/ <br>
+>   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   arquivo3.txt  arquivo4.txt  arquivo5.txt  Planilhas  workspace <br>
+>   marcio@ubuntu-srv-dio:~$
+
+O comando **rm** é o mesmo para apagar arquivos, ou seja, mais útil que o rmdir que só apaga pastas vazias.
+
+==================================================
+## Obtendo ajuda
+
+<br>
+O Linux possui um manual imbutido para seus comandos, basta utilizar --help após o comando, por exemplo: <br>
+
+> marcio@ubuntu-srv-dio:~\$ ls --help <br>
+> Usage: ls [OPTION]... [FILE]... <br>
+> List information about the FILEs (the current directory by default). <br>
+> Sort entries alphabetically if none of -cftuvSUX nor --sort is specified. <br>
+> Mandatory arguments to long options are mandatory for short options too. <br>
+>   -a, --all                  do not ignore entries starting with . <br>
+>   -A, --almost-all           do not list implied . and .. <br>
+>       --author               with -l, print the author of each file <br>
+>   -b, --escape               print C-style escapes for nongraphic characters <br>
+
+<br>
+O comando _man_ também vai exibir um texto com o uso do comando: <br>
+
+> marcio@ubuntu-srv-dio:~\$ man rmdir <br>
+> marcio@ubuntu-srv-dio:~\$ man rm <br>
+
+<br>
+Visite também: https://help.ubuntu.com/
+
+==================================================
+
+## Executando tarefas administrativas como root
+
+Para realizar tarefas de administrador o usuário atual precisa estar nos grupos *adm* e *sudo*.
+Ver usuários e grupos:<br>
+$cat /etc/group
+
+<br>
+Para executar um comando administrativo como criar uma pasta ou arquivo dentro de uma pasta do sistema:
+
+> marcio@ubuntu-srv-dio:/\$ mkdir Aula <br>
+> mkdir: cannot create directory ‘Aula’: Permission denied <br>
+> marcio@ubuntu-srv-dio:/\$ **sudo** mkdir Aula <br>
+> [sudo] password for marcio: <br>
+
+<br>
+O diretório criado foi adicionado com o proprietário "root", sendo assim, só podemos criar arquivos e mais pastas dentro dele se utilizarmos "sudo". <br>
+
+> marcio@ubuntu-srv-dio:/$ ll -lh <br>
+> total 2,9G <br>
+> drwxr-xr-x  20 root root 4,0K ago 14 17:51 ./ <br>
+> drwxr-xr-x  20 root root 4,0K ago 14 17:51 ../ <br>
+> drwxr-xr-x   2 root root 4,0K ago 14 17:51 **Aula**/ <br>
+
+==================================================
+
+## Logando como usuário root
+
+NÃO É RECOMENDADO POR QUESTÃO DE BOAS PRÁTICAS DE ADMINISTRAÇÃO E SEGURANÇA, mas podemos utilizar o usuário root para realizar tarefas administrativas sem precisar ficar digitando a senha toda hora.<br>
+Para isso, primeiro vamos definir uma senha diferente para o usuário root: <br>
+
+>   marcio@ubuntu-srv-dio:~\$ sudo passwd root <br>
+>   [sudo] password for marcio: *<senha do usuário logado>* <br>
+>   New password: *<nova senha para o usuário root>* <br>
+>   Retype new password: *<repetir a nova senha para o usuário root>* <br>
+>   passwd: password updated successfully <br>
+>   marcio@ubuntu-srv-dio:~$ <br>
+
+<br>
+Para alternar para o usuário root:
+
+>   marcio@ubuntu-srv-dio:~$ su <br>
+>   Password: <br>
+>   root@ubuntu-srv-dio:/home/marcio# <br>
+
+<br>
+Voltar para o usuário anterior ou outro usuário:
+
+> **root**@ubuntu-srv-dio:/home/marcio# su marcio <br>
+> **marcio**@ubuntu-srv-dio:~$
+
+Repare também na alteração no prompt de **"#"** de volta para **"$"**.
+
+==================================================
+
+## Liberando acesso remoto do usuário root
+
+Para conseguirmos realizar um acesso remoto ssh diretamente com o usuário root, vamos precisar alterar algumas informações no serviço sshd, que é o serviço responsável pelo acesso ssh.
+
+>   marcio@ubuntu-srv-dio:~\$ sudo nano /etc/ssh/sshd_config <br>
+>   [sudo] password for marcio: <br>
+
+Descomentar e Alterar a linha abaixo: <br>
+de <br>
+#PermitRootLogin prohibit-password <br>
+para:  <br>
+PermitRootLogin yes <br>
+
+<br>
+Salva e reinicia o serviço sshd: 
+
+> marcio@ubuntu-srv-dio:~$ sudo systemctl restart sshd
+
+==================================================
+
+## Trabalhando com arquivos de texto
+
+O VI é um editor de texto rudimentar e básico para edição de texto no Linux Server. Ao abrir, para começara escrever nele entre no modo "Inserção" digitando a letra "i". Para sair do modo de inserção tecle Esc, e para salvar e sair ":wq".
+
+Neste curso utilizaremos o NANO, que é um editor um pouco mais "user friendly" que o VI.
+
+Comandos básicos do NANO: <br>
+- Ctrl+S = Salva.
+- Ctrl+O = Salva com opção de altera o nome do arquivo.
+- Ctrl+X = Sair do Nano.
+- Ctrl+K = Recorta
+- Ctrl+U = Cola
+
+==================================================
+
+## Histórico de comandos
+
+<br>
+Listar os últimos 1000 comandos utilizados pelo usuário. <br>
+
+> $ history
+
+<br>
+Listar apenas os últimos 30 comandos:
+
+> $ history 30
+
+<br>
+Listar historico relacionado a uma palavra:
+
+> marcio@ubuntu-srv-dio:~\$ history | grep "Planilhas" <br>
+>   713  mkdir Planilhas <br>
+>   714  cd Planilhas/ <br>
+>   736  cd Planilhas/ <br>
+>   741  rm -rf Planilhas/ <br>
+>   775  history | grep "Planilhas" <br>
+> marcio@ubuntu-srv-dio:~$ <br>
+
