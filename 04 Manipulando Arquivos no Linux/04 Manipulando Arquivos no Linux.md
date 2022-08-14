@@ -1,10 +1,10 @@
 # Manipulando Arquivos no Linux
 ## Terminal Linux - Apresentação
 
-usuário@nomemaquina:~\$<br>
+usuário@nomemaquina:\~\$<br>
 **usuário**: Nome do usuário atualmente logado no terminal.<br>
 **@nomemaquina**: Nome da máquina em que se está logado.<br>
-**\~$**: Indica o local/pasta onde o usuário está no momento. O "~" signigica que a pasta atual é a **/home/usuário**.<br>
+**\~$**: Indica o local/pasta onde o usuário está no momento. O "\~" signigica que a pasta atual é a **/home/usuário**.<br>
 
 Os comandos do Linux são Case Sensitive, o que significa que você deve respeitar o uso de letras MAIÚSCULAS e minúsculas.
 
@@ -12,9 +12,9 @@ Os comandos do Linux são Case Sensitive, o que significa que você deve respeit
 ## Navegando pelo sistema de arquivos
 
 pwd: Comando exibe na tela a pasta atual.
->    marcio@ubuntu-srv-dio:~\$ pwd <br>
+>    marcio@ubuntu-srv-dio:\~\$ pwd <br>
 >    /home/marcio <br>
->    marcio@ubuntu-srv-dio:~\$
+>    marcio@ubuntu-srv-dio:\~\$
 
 <br>
 
@@ -90,10 +90,10 @@ Os Filtros de Exclusão podem ser usados para criar, listar ou excluir arquivos 
  <br>
 
 Exemplo removendo arquivos: <br>
->   marcio@ubuntu-srv-dio:~\$ ls arquivo[^3-5]* <br>
+>   marcio@ubuntu-srv-dio:\~\$ ls arquivo[^3-5]* <br>
 >   arquivo1.txt  arquivo2.txt <br>
 >   marcio@ubuntu-srv-dio:~\$ rm arquivo[^3-5]* <br>
->   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   marcio@ubuntu-srv-dio:\~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  workspace <br>
 >   marcio@ubuntu-srv-dio:~\$
 
