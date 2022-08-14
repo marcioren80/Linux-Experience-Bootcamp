@@ -96,5 +96,12 @@ Os Filtros de Exclusão podem ser usados para criar, listar ou excluir arquivos 
 >   marcio@ubuntu-srv-dio:~\$ ls arquivo[^3-5]* <br>
 >   arquivo1.txt  arquivo2.txt <br>
 
-<br>
+ <br>
 
+Exemplo removendo arquivos: <br>
+>   marcio@ubuntu-srv-dio:~\$ ls arquivo[^3-5]* <br>
+>   arquivo1.txt  arquivo2.txt <br>
+>   marcio@ubuntu-srv-dio:~\$ rm arquivo[^3-5]* <br>
+>   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   arquivo3.txt  arquivo4.txt  arquivo5.txt  workspace <br>
+>   marcio@ubuntu-srv-dio:~\$
