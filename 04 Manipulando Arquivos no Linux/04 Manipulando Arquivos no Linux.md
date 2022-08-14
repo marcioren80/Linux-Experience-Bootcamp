@@ -92,10 +92,10 @@ Os Filtros de Exclusão podem ser usados para criar, listar ou excluir arquivos 
 Exemplo removendo arquivos: <br>
 >   marcio@ubuntu-srv-dio:\~\$ ls arquivo[^3-5]* <br>
 >   arquivo1.txt  arquivo2.txt <br>
->   marcio@ubuntu-srv-dio:~\$ rm arquivo[^3-5]* <br>
+>   marcio@ubuntu-srv-dio:\~\$ rm arquivo[^3-5]* <br>
 >   marcio@ubuntu-srv-dio:\~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  workspace <br>
->   marcio@ubuntu-srv-dio:~\$
+>   marcio@ubuntu-srv-dio:\~\$
 
 ==================================================
 ## Localizando arquivos
@@ -125,8 +125,8 @@ Fazendo uma busca pelo nome do arquivo com find: <br>
 ## Criando diretórios
 
 O comando para criar diretórios é o **mkdir**:
->   marcio@ubuntu-srv-dio:~\$ mkdir Documentos <br>
->   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   marcio@ubuntu-srv-dio:\~\$ mkdir Documentos <br>
+>   marcio@ubuntu-srv-dio:\~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  Documentos  workspace <br>
 >   marcio@ubuntu-srv-dio:~\$ <br>
 
