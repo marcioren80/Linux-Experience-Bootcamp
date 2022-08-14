@@ -132,18 +132,18 @@ O comando para criar diretórios é o **mkdir**:
 
 <br>
 
->   marcio@ubuntu-srv-dio:~\$ mkdir Planilhas <br>
+>   marcio@ubuntu-srv-dio:\~\$ mkdir Planilhas <br>
 >   marcio@ubuntu-srv-dio:~\$ cd Planilhas/ <br>
->   marcio@ubuntu-srv-dio:~/Planilhas$ mkdir Financeiras <br>
+>   marcio@ubuntu-srv-dio:\~/Planilhas$ mkdir Financeiras <br>
 >   marcio@ubuntu-srv-dio:~/Planilhas$ mkdir Escolares <br>
->   marcio@ubuntu-srv-dio:~/Planilhas$ ls <br>
+>   marcio@ubuntu-srv-dio:\~/Planilhas$ ls <br>
 >   Escolares       Financeiras <br>
 >   marcio@ubuntu-srv-dio:~/Planilhas$ <br>
 
 <br>
 
 Se for necessário criar uma pasta com nome que tenha espaço, utilize o nome entre aspas simples:
->   marcio@ubuntu-srv-dio:~\$ mkdir 'Meus Documentos' <br>
+>   marcio@ubuntu-srv-dio:\~\$ mkdir 'Meus Documentos' <br>
 >   marcio@ubuntu-srv-dio:~\$ ls <br>
 >    arquivo3.txt   arquivo4.txt   arquivo5.txt   Documentos  'Meus Documentos'   Planilhas   workspace <br>
 >   marcio@ubuntu-srv-dio:~\$ <br>
@@ -151,20 +151,26 @@ Se for necessário criar uma pasta com nome que tenha espaço, utilize o nome en
 ==================================================
 ## Excluindo arquivos e diretórios
 
+<br>
 O comando para excluir diretórios é o **rmdir**
->   marcio@ubuntu-srv-dio:~\$ rmdir 'Meus Documentos'/
+
+>   marcio@ubuntu-srv-dio:\~\$ rmdir 'Meus Documentos'/ <br>
 >   marcio@ubuntu-srv-dio:~$
 
 Obs1: a pasta não será excluída se houver arquivos dentro. <br>
 Obs2: O LINUX NÃO PERGUNTA SE VOCÊ TEM CERTEZA QUE DESEJA EXCLUIR, ELE APAGA E PRONTO, ENTÃO TENHA CUIDADO!
 
+<br>
 O Linux reclama se você tentar apagar um diretório com arquivos dentro:
->   marcio@ubuntu-srv-dio:~\$ rmdir Documentos/ <br>
+
+>   marcio@ubuntu-srv-dio:\~\$ rmdir Documentos/ <br>
 >   rmdir: failed to remove 'Documentos/': Directory not empty <br>
 >   marcio@ubuntu-srv-dio:~$
 
+<br>
 Sendo assim, utilize:
->   marcio@ubuntu-srv-dio:~\$ **rm -rf** Documentos/ <br>
+
+>   marcio@ubuntu-srv-dio:\~\$ **rm -rf** Documentos/ <br>
 >   marcio@ubuntu-srv-dio:~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  Planilhas  workspace <br>
 >   marcio@ubuntu-srv-dio:~$
@@ -190,7 +196,7 @@ O Linux possui um manual imbutido para seus comandos, basta utilizar --help apó
 <br>
 O comando _man_ também vai exibir um texto com o uso do comando: <br>
 
-> marcio@ubuntu-srv-dio:~\$ man rmdir <br>
+> marcio@ubuntu-srv-dio:\~\$ man rmdir <br>
 > marcio@ubuntu-srv-dio:~\$ man rm <br>
 
 <br>
@@ -228,7 +234,7 @@ O diretório criado foi adicionado com o proprietário "root", sendo assim, só 
 NÃO É RECOMENDADO POR QUESTÃO DE BOAS PRÁTICAS DE ADMINISTRAÇÃO E SEGURANÇA, mas podemos utilizar o usuário root para realizar tarefas administrativas sem precisar ficar digitando a senha toda hora.<br>
 Para isso, primeiro vamos definir uma senha diferente para o usuário root: <br>
 
->   marcio@ubuntu-srv-dio:~\$ sudo passwd root <br>
+>   marcio@ubuntu-srv-dio:\~\$ sudo passwd root <br>
 >   [sudo] password for marcio: *<senha do usuário logado>* <br>
 >   New password: *<nova senha para o usuário root>* <br>
 >   Retype new password: *<repetir a nova senha para o usuário root>* <br>
@@ -302,7 +308,7 @@ Listar apenas os últimos 30 comandos:
 <br>
 Listar historico relacionado a uma palavra:
 
-> marcio@ubuntu-srv-dio:~\$ history | grep "Planilhas" <br>
+> marcio@ubuntu-srv-dio:\~\$ history | grep "Planilhas" <br>
 >   713  mkdir Planilhas <br>
 >   714  cd Planilhas/ <br>
 >   736  cd Planilhas/ <br>
