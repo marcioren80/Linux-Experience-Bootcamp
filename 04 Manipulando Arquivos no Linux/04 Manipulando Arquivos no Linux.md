@@ -8,7 +8,6 @@ usuário@nomemaquina:\~\$<br>
 
 Os comandos do Linux são Case Sensitive, o que significa que você deve respeitar o uso de letras MAIÚSCULAS e minúsculas.
 
-==================================================
 ## Navegando pelo sistema de arquivos
 
 <br>
@@ -38,7 +37,6 @@ Retornar um nível de pasta: <br>
 >   marcio@ubuntu-srv-dio:/var/log$ cd .. <br>
 >   marcio@ubuntu-srv-dio:/var$
 
-==================================================
 ## Filtrando a exibição de arquivos
 <br>
 Para listar arquivos e pastas de um diretório de forma paginada:
@@ -100,7 +98,6 @@ Exemplo removendo arquivos: <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  workspace <br>
 >   marcio@ubuntu-srv-dio:\~\$
 
-==================================================
 ## Localizando arquivos
 
 <br>
@@ -126,7 +123,6 @@ Fazendo uma busca pelo nome do arquivo com find: <br>
 >   ./marcio/arquivo4.txt <br>
 >   marcio@ubuntu-srv-dio:/home$ <br>
 
-==================================================
 ## Criando diretórios
 
 <br>
@@ -138,9 +134,9 @@ O comando para criar diretórios é o **mkdir**:
 >   marcio@ubuntu-srv-dio:~\$ <br>
 
 >   marcio@ubuntu-srv-dio:\~\$ mkdir Planilhas <br>
->   marcio@ubuntu-srv-dio:~\$ cd Planilhas/ <br>
+>   marcio@ubuntu-srv-dio:\~\$ cd Planilhas/ <br>
 >   marcio@ubuntu-srv-dio:\~/Planilhas$ mkdir Financeiras <br>
->   marcio@ubuntu-srv-dio:~/Planilhas$ mkdir Escolares <br>
+>   marcio@ubuntu-srv-dio:\~/Planilhas$ mkdir Escolares <br>
 >   marcio@ubuntu-srv-dio:\~/Planilhas$ ls <br>
 >   Escolares       Financeiras <br>
 >   marcio@ubuntu-srv-dio:~/Planilhas$ <br>
@@ -149,11 +145,10 @@ O comando para criar diretórios é o **mkdir**:
 Se for necessário criar uma pasta com nome que tenha espaço, utilize o nome entre aspas simples:
 
 >   marcio@ubuntu-srv-dio:\~\$ mkdir 'Meus Documentos' <br>
->   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   marcio@ubuntu-srv-dio:\~\$ ls <br>
 >   arquivo3.txt   arquivo4.txt   arquivo5.txt   Documentos  'Meus Documentos'   Planilhas   workspace <br>
->   marcio@ubuntu-srv-dio:~\$ <br>
+>   marcio@ubuntu-srv-dio:\~\$ <br>
 
-==================================================
 ## Excluindo arquivos e diretórios
 
 <br>
@@ -176,13 +171,12 @@ O Linux reclama se você tentar apagar um diretório com arquivos dentro:
 Sendo assim, utilize:
 
 >   marcio@ubuntu-srv-dio:\~\$ **rm -rf** Documentos/ <br>
->   marcio@ubuntu-srv-dio:~\$ ls <br>
+>   marcio@ubuntu-srv-dio:\~\$ ls <br>
 >   arquivo3.txt  arquivo4.txt  arquivo5.txt  Planilhas  workspace <br>
->   marcio@ubuntu-srv-dio:~$
+>   marcio@ubuntu-srv-dio:\~$
 
 O comando **rm** é o mesmo para apagar arquivos, ou seja, mais útil que o rmdir que só apaga pastas vazias.
 
-==================================================
 ## Obtendo ajuda
 
 <br>
@@ -206,8 +200,6 @@ O comando _man_ também vai exibir um texto com o uso do comando: <br>
 
 <br>
 Visite também: https://help.ubuntu.com/
-
-==================================================
 
 ## Executando tarefas administrativas como root
 
@@ -233,8 +225,6 @@ O diretório criado foi adicionado com o proprietário "root", sendo assim, só 
 > drwxr-xr-x  20 root root 4,0K ago 14 17:51 ./ <br>
 > drwxr-xr-x  20 root root 4,0K ago 14 17:51 ../ <br>
 > drwxr-xr-x   2 root root 4,0K ago 14 17:51 **Aula**/ <br>
-
-==================================================
 
 ## Logando como usuário root
 <br>
@@ -263,19 +253,19 @@ Voltar para o usuário anterior ou outro usuário:
 
 Repare também na alteração no prompt de **"#"** de volta para **"$"**.
 
-==================================================
-
 ## Liberando acesso remoto do usuário root
 
 <br>
 Para conseguirmos realizar um acesso remoto ssh diretamente com o usuário root, vamos precisar alterar algumas informações no serviço sshd, que é o serviço responsável pelo acesso ssh.<br>
 
->   marcio@ubuntu-srv-dio:~\$ sudo nano /etc/ssh/sshd_config <br>
+>   marcio@ubuntu-srv-dio:\~\$ sudo nano /etc/ssh/sshd_config <br>
 >   [sudo] password for marcio: <br>
 
+<br>
 Descomentar e Alterar a linha abaixo: <br>
-de <br>
-- #PermitRootLogin prohibit-password <br>
+de:
+
+- \# PermitRootLogin prohibit-password <br>
 para:  <br>
 - PermitRootLogin yes <br>
 
@@ -283,8 +273,6 @@ para:  <br>
 Salva e reinicia o serviço sshd: 
 
 > marcio@ubuntu-srv-dio:~$ sudo systemctl restart sshd
-
-==================================================
 
 ## Trabalhando com arquivos de texto
 
@@ -300,8 +288,6 @@ Comandos básicos do NANO: <br>
 - Ctrl+X = Sair do Nano.
 - Ctrl+K = Recorta
 - Ctrl+U = Cola
-
-==================================================
 
 ## Histórico de comandos
 
@@ -324,19 +310,19 @@ Listar historico relacionado a uma palavra:
 >   736  cd Planilhas/ <br>
 >   741  rm -rf Planilhas/ <br>
 >   775  history | grep "Planilhas" <br>
-> marcio@ubuntu-srv-dio:~$ <br>
+> marcio@ubuntu-srv-dio:\~$ <br>
 
 <br>
 Muito interessante, caso tenha a necessidade, é possível colocar data e hora na saída do histórico de comandos:
 
->	marcio@ubuntu-srv-dio:\~$ export HISTTIMEFORMAT="%c "
->	marcio@ubuntu-srv-dio:~$ history 5
->	  773  dom 14 ago 2022 19:49:03 logout
->	  774  dom 14 ago 2022 19:49:03 exit
->	  775  dom 14 ago 2022 19:49:06 history | grep "Planilhas"
->	  776  dom 14 ago 2022 21:11:19 export HISTTIMEFORMAT="%c "
->	  777  dom 14 ago 2022 21:11:44 history 5
->	marcio@ubuntu-srv-dio:\~$
+>	marcio@ubuntu-srv-dio:\~\$ export HISTTIMEFORMAT="%c " <br>
+>	marcio@ubuntu-srv-dio:\~\$ history 5 <br>
+>	  **773  dom 14 ago 2022 19:49:03** logout <br>
+>	  **774  dom 14 ago 2022 19:49:03** exit <br>
+>	  **775  dom 14 ago 2022 19:49:06** history | grep "Planilhas" <br>
+>	  **776  dom 14 ago 2022 21:11:19** export HISTTIMEFORMAT="%c " <br>
+>	  **777  dom 14 ago 2022 21:11:44** history 5 <br>
+>	marcio@ubuntu-srv-dio:\~\$ <br>
 
 <br>
 Para impedir que os comandos apareçam no *history*:
@@ -351,8 +337,8 @@ Limpar o histórico de comandos:
 <br>
 Aumentar ou diminuir a quantidade de linhas de comandos salvas no history (config por usuário):
 
->   marcio@ubuntu-srv-dio:~$ nano .bashrc
->   \# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
->   HISTSIZE=1000 <<<< Altera o valor para mais ou para menos.
->   HISTFILESIZE=2000 <<<<< Tamanho máximo do arquivo em bytes.
+>   marcio@ubuntu-srv-dio:~$ nano .bashrc <br>
+>   \# for setting history length see HISTSIZE and HISTFILESIZE in bash(1) <br>
+>   HISTSIZE=1000 <<<< Altera o valor para mais ou para menos. <br>
+>   HISTFILESIZE=2000 <<<<< Tamanho máximo do arquivo em bytes. <br>
 
