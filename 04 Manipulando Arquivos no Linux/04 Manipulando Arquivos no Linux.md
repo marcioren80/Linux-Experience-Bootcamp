@@ -288,8 +288,8 @@ Salva e reinicia o serviço sshd:
 
 ## Trabalhando com arquivos de texto
 
-O VI é um editor de texto rudimentar e básico para edição de texto no Linux Server. Ao abrir, para começara escrever nele entre no modo "Inserção" digitando a letra "i". Para sair do modo de inserção tecle Esc, e para salvar e sair ":wq".
-
+<br>
+O VI é um editor de texto rudimentar e básico para edição de texto no Linux Server. Ao abrir, para começara escrever nele entre no modo "Inserção" digitando a letra "i". Para sair do modo de inserção tecle Esc, e para salvar e sair ":wq".<br>
 Neste curso utilizaremos o NANO, que é um editor um pouco mais "user friendly" que o VI.
 
 <br>
@@ -325,4 +325,34 @@ Listar historico relacionado a uma palavra:
 >   741  rm -rf Planilhas/ <br>
 >   775  history | grep "Planilhas" <br>
 > marcio@ubuntu-srv-dio:~$ <br>
+
+<br>
+Muito interessante, caso tenha a necessidade, é possível colocar data e hora na saída do histórico de comandos:
+
+>	marcio@ubuntu-srv-dio:\~$ export HISTTIMEFORMAT="%c "
+>	marcio@ubuntu-srv-dio:~$ history 5
+>	  773  dom 14 ago 2022 19:49:03 logout
+>	  774  dom 14 ago 2022 19:49:03 exit
+>	  775  dom 14 ago 2022 19:49:06 history | grep "Planilhas"
+>	  776  dom 14 ago 2022 21:11:19 export HISTTIMEFORMAT="%c "
+>	  777  dom 14 ago 2022 21:11:44 history 5
+>	marcio@ubuntu-srv-dio:\~$
+
+<br>
+Para impedir que os comandos apareçam no *history*:
+
+>	marcio@ubuntu-srv-dio:~$ set +o history
+
+<br>
+Limpar o histórico de comandos:
+
+>   marcio@ubuntu-srv-dio:~$ history -c
+
+<br>
+Aumentar ou diminuir a quantidade de linhas de comandos salvas no history (config por usuário):
+
+>   marcio@ubuntu-srv-dio:~$ nano .bashrc
+>   \# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+>   HISTSIZE=1000 <<<< Altera o valor para mais ou para menos.
+>   HISTFILESIZE=2000 <<<<< Tamanho máximo do arquivo em bytes.
 
