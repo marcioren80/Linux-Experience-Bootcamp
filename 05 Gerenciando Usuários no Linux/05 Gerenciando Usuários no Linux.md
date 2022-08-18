@@ -1,7 +1,5 @@
 # Gerenciando Usuários no Linux
 
-<br>
-
 ## Criando e excluindo usuários
 
 A maioria das tarefas em um ambiente de servidor precisa ser executada por um usuário com permissões mais altas, já para acesso a pastas de arquivos ou apesas utilizar serviços, não é necessário que o usuário tenha altas permissões. Aqui veremos as principais configurações de usuários.
@@ -49,8 +47,6 @@ Caso tenha se esquecido de definir o shell do usuário:
 
 >   root@ubuntu-srv-dio:/home# chsh -s /bin/bash joao
 
-<br>
-
 ## Editando informações do usuário
 
 <br>
@@ -76,8 +72,6 @@ Ver os usuários criados no sistema:
 
 >   root@ubuntu-srv-dio:/# cat /etc/passwd
 
-<br>
-
 ## Shell Script - Criando usuários em lote
 
 <br>
@@ -88,6 +82,7 @@ Vamos ver primeiro como podemos criar um usuário já com senha inicial definida
 <br>
 As vezes vejo nos fóruns o pessoal faz uma pergunta simples, em que a resposta deveria ser só uma linha de comando, duas no máximo, mas o pessoal "mais sênior" gosta de responder com scrits mirabolantes, muitas vezes já passando longo do nível de conhecimento de quem fez a pergunta. Não é menosprezar e superestimar, mas é começar pelo mais simples, aí se o usuário que perguntou estiver precisando de algo mais elaborado, aí sim partir para essas respostas com scritps cheios das firulas dos "do this" e "do that".
 
+<br>
 Ao montar um script, o admninstrador pode criar algo como:
 
 >   root@ubuntu-srv-dio:/# useradd convidado1 -c "Convidado especial" -s /bin/bash -m -p $(openssl passwd senha123)
@@ -110,8 +105,6 @@ OBS: Você pode se deparar com algumas versões do server em que pode ser que se
 
    -p $(openssl passwd -crypt senha123)
 
-<br>
-
 ## Adicionando usuários a grupos
 
 <br>
@@ -120,12 +113,9 @@ Ver os grupos existentes no sistema:
 >   root@ubuntu-srv-dio:/# cat /etc/group
 
 <br>
-
 Adicionando um usuário a um ou mais grupos:
 
 >   root@ubuntu-srv-dio:/# usermod -G adm,sudo barbara
-
-<br>
 
 ## Criando novos grupos
 
@@ -150,9 +140,13 @@ Criando um usuário e já adionar ao um grupo:
 Observação: ao utilizar o usermod -G, tenha em mente que o usuário será removido dos grupos anteriores. Se você precisa que o usuário seja mantido, informe no comando todos os grupos que o usuário deve pertencer. Ex:
 
 >   root@ubuntu-srv-dio:/# cat /etc/group | grep GRP <br>
->   GRP_ADM:x:1008:rafaela,juliana <br>
->   GRP_VEN:x:1009:maria,joao <br>
+>   GRP_ADM: x:1008:rafaela,juliana <br>
+>   GRP_VEN: x:1009:maria,joao <br>
 >   root@ubuntu-srv-dio:/# usermod -G adm,sudo,GRP_ADM,GRP_VEN barbara <br>
 >   root@ubuntu-srv-dio:/# cat /etc/group | grep GRP <br>
->   GRP_ADM:x:1008:rafaela,juliana,barbara <br>
->   GRP_VEN:x:1009:maria,joao,barbara <br>
+>   GRP_ADM: x:1008:rafaela,juliana,barbara <br>
+>   GRP_VEN: x:1009:maria,joao,barbara <br>
+
+
+Tive que colocar espaço na exibição do : x : porque o markdown reconhece como emoji se colocar o "x" entre ":" sem espaço: :x:. Não queria que fique tão feio como **:x':** ou **:'x:** .
+
