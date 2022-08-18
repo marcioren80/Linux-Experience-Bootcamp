@@ -137,16 +137,37 @@ Criando um usuário e já adionar ao um grupo:
 >   root@ubuntu-srv-dio:/# useradd rafaela -c "Rafaela Lima" -s /bin/bash -m -p $(openssl passwd senha123) -G GRP_ADM
 
 <br>
-Observação: ao utilizar o usermod -G, tenha em mente que o usuário será removido dos grupos anteriores. Se você precisa que o usuário seja mantido, informe no comando todos os grupos que o usuário deve pertencer. Ex:
+Observação: ao utilizar o usermod -G, tenha em mente que o usuário será removido dos grupos anteriores. 
+<br>
+O mais correto é utilizar o parâmetro "-a", que adiciona o usuário aos demais grupos sem removê-lo dos grupos que já pertence:
 
->   root@ubuntu-srv-dio:/# cat /etc/group | grep GRP <br>
->   GRP_ADM: x:1008:rafaela,juliana <br>
->   GRP_VEN: x:1009:maria,joao <br>
->   root@ubuntu-srv-dio:/# usermod -G adm,sudo,GRP_ADM,GRP_VEN barbara <br>
->   root@ubuntu-srv-dio:/# cat /etc/group | grep GRP <br>
->   GRP_ADM: x:1008:rafaela,juliana,barbara <br>
->   GRP_VEN: x:1009:maria,joao,barbara <br>
+> -a, --append
+append the user to the supplemental GROUPS mentioned by the -G option without removing the user from other groups
 
+>   root@ubuntu-srv-dio:/# usermod -a GRP_ADM,GRP_VEN barbara <br>
+>   
+>   root@ubuntu-srv-dio:/# cat /etc/group | grep barbara <br>
+>   adm: x :4:syslog,marcio,barbara <br>
+>   sudo: x :27:marcio,barbara <br>
+>   barbara: x :1007: <br>
+>   GRP_ADM: x :1008:rafaela,juliana,barbara <br>
+>   GRP_VEN: x :1009:maria,joao,barbara <br>
+   
+<br>
+Para remover o usuário de um grupo específico:
 
-Tive que colocar espaço na exibição do : x : porque o markdown reconhece como emoji se colocar o "x" entre ":" sem espaço: :x:. Não queria que fique tão feio como **:x':** ou **:'x:** .
+>   root@ubuntu-srv-dio:/# gpasswd -d barbara sudo <br>
+>   Removing user barbara from group sudo <br>
+>
+>   root@ubuntu-srv-dio:/# cat /etc/group | grep barbara <br>
+>   adm: x :4:syslog,marcio,barbara <br>
+>   barbara: x :1007: <br>
+>   GRP_ADM: x :1008:rafaela,juliana,barbara <br>
+>   GRP_VEN: x :1009:maria,joao,barbara <br>
+
+## Conhecendo o sistema de permissões
+
+![Sistema de Permissões no Linux](sistema-de-permissoes.png)
+![](chmod-permissoes-2-500x150.png)
+![](perm.png)
 
