@@ -246,12 +246,12 @@ Estado atual:
 
 >   root@ubuntu-srv-dio:/# chmod 750 /adm/ <br>
 
-- Primeiro dígito: Dono
-    - 7 --> 4(leitura)+2(gravação)+1(execução)
-- Segundo dígito: usuários do Grupo
-    - 5 --> 4(leitura)+1(execução)
-- Terceiro dígito: Demais usuários
-    - 0 --> nenhuma permissão
+| *1º Dígito:* | *2º Dígito:* | *3º Dígito:* |
+|:---: |:---: |:---: |
+|Dono |Usuários do grupo |Demais usuários |
+| 4 (leitura) + <br> 2 (gravação) + <br> 1 (execução) | 4(leitura) + <br> 1 (execução) | 0 (Nenhuma) |
+| 7	| 5	| 0	|
+| rwx | r-x | --- |
 
 >   root@ubuntu-srv-dio:/# ls -lh <br>
 >   total 2,9G <br>
@@ -297,12 +297,11 @@ Alteração:
 <br>
 Recapitulando:
 
-
-|1º dígito: |2º dígito: |3º dígito: |
+| *1º Dígito:* | *2º Dígito:* | *3º Dígito:* |
 |:---: |:---: |:---: |
 |Dono |Usuários do grupo |Demais usuários |
-| 7	| 7	| 5	|
 | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>1(execução) |
+| 7	| 7	| 5	|
 | rwx | rwx | r-x |
 
 ## Entendendo melhor as permissões de execução para scripts
