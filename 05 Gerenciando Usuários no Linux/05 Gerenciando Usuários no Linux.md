@@ -168,6 +168,142 @@ Para remover o usuário de um grupo específico:
 ## Conhecendo o sistema de permissões
 
 ![Sistema de Permissões no Linux](sistema-de-permissoes.png)
+
 ![](chmod-permissoes-2-500x150.png)
+
 ![](perm.png)
+
+>   root@ubuntu-srv-dio:/home# ls -l <br>
+>   total 44 <br>
+>   
+>   drwxr-x--- 3 barbara barbara 4096 ago 18 15:26 barbara <br>
+>   drwxr-x--- 2 guest   guest   4096 ago 18 10:25 guest <br>
+>   drwxr-x--- 3 guest10 guest10 4096 ago 18 15:15 guest10 <br>
+>   drwxr-x--- 2 guest11 guest11 4096 ago 18 14:53 guest11 <br>
+>   drwxr-x--- 2 guest12 guest12 4096 ago 18 14:53 guest12 <br>
+>   drwxr-x--- 2 guest13 guest13 4096 ago 18 14:53 guest13 <br>
+>   drwxr-x--- 2 joao    joao    4096 ago 18 10:16 joao <br>
+>   drwxr-x--- 2 juliana juliana 4096 ago 18 16:05 juliana <br>
+>   drwxr-x--- 6 marcio  marcio  4096 ago 18 08:38 marcio <br>
+>   drwxr-x--- 2 maria   maria   4096 ago 18 16:05 maria <br>
+>   drwxr-x--- 2 rafaela rafaela 4096 ago 18 16:03 rafaela <br>
+>   root@ubuntu-srv-dio:/home# <br>
+
+**d rwx r-x ---**: Sistema de permissões <br>
+d: Indica que se trata de um diretório <br>
+rwx: Informações das permissões do dono <br>
+r-x: Informações das permissões do grupo <br>
+---: Informações das permissões de outros <br>
+
+r : read - permissão de leirura <br>
+w : write - permissão de escrita <br>
+x : eXecute - permissão de execução <br>
+
+<br>
+Trocando o dono de um diretório
+
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   total 2,9G <br>
+>   d rwx r-x r-x   2 root root 4,0K ago 18 18:26 adm <br>
+>
+>   root@ubuntu-srv-dio:/# chown barbara:GRP_ADM /adm/ <br>
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   total 2,9G <br>
+>   d rwx r-x r-x   2 barbara GRP_ADM 4,0K ago 18 18:26 adm <br>
+
+Agora a dona do diretório é a usuária barbara e o diretório pertence ao grupo GRP_ADM. Como podemos ver nas permissões, apenas barbara pode gravar no diretório, os demais usuários do grupo podem apenas ler e executar arquivos neste diretório, mas não podem fazer nenhuma alteração neles.
+
+<br>
+Outro exemplo:
+
+>   root@ubuntu-srv-dio:/# chown maria:GRP_VEN /ven/ <br>
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   total 2,9G <br>
+>   drwxr-xr-x   2 maria   GRP_VEN 4,0K ago 18 >   18:27 ven <br>
+
+Aqui a dona do diretório agora é maria, o diretório pertence ao grupo GRP_VEN, apenas maria pode gravar no diretório, os demais usuários do grupo podem apenas ler e executar arquivos neste diretório.
+
+## Alterando as permissões de um diretório - arquivo
+
+Agora vamos configurar permissões específicas para arquivos e pastas.
+
+Podemos fazer fazer a alteração das permissões utilizando o sistema de valores numéricos:
+
+|Permissão		|Valor	|
+| :---: 		| :---: |
+|               |       |
+|Leitura (R)	|   4	|
+|Gravação (W)	|   2	|
+|Execução (X)	|   1	|
+|Nenhuma		|   0	|
+
+<br>
+Vamos alterar as permissões de modo que outros usuários não tenham nenhum acesso ao diretório *adm*
+Estado atual:
+
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   drwxr-xr-x   2 barbara GRP_ADM 4,0K ago 18 18:26 adm <br>
+
+>   root@ubuntu-srv-dio:/# chmod 750 /adm/ <br>
+
+- Primeiro dígito: Dono
+    - 7 --> 4(leitura)+2(gravação)+1(execução)
+- Segundo dígito: usuários do Grupo
+    - 5 --> 4(leitura)+1(execução)
+- Terceiro dígito: Demais usuários
+    - 0 --> nenhuma permissão
+
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   total 2,9G <br>
+>   drwxr-x---   2 barbara GRP_ADM 4,0K ago 18 18:26 adm <br>
+
+<br>
+Testando as permissões:
+
+>   barbara@ubuntu-srv-dio:/adm$ nano texto-barbara.txt <br>
+>   barbara@ubuntu-srv-dio:/adm$ ls -l <br>
+>   total 4 <br>
+>   -rw-rw-r-- 1 barbara barbara 47 ago 18 19:30 texto-barbara.txt <br>
+Usuária barbara, como proprietária do diretório, consegue gravar arquivos e realizar alterações neles.
+
+>   barbara@ubuntu-srv-dio:/adm$ su rafaela <br>
+>   Password: <br>
+>   rafaela@ubuntu-srv-dio:/adm$ ls <br>
+>   texto-barbara.txt <br>
+>   rafaela@ubuntu-srv-dio:/adm$ nano texto-barbara.txt <br>
+A usuária rafaela pertence ao grupo GRP_ADM assim como a barbara, portanto, consegue listar, e abrir o arquivo.
+
+>   rafaela@ubuntu-srv-dio:/adm$ su maria <br>
+>   Password: <br>
+>   maria@ubuntu-srv-dio:/adm$ ls <br>
+>   ls: cannot open directory '.': Permission denied <br>
+>   maria@ubuntu-srv-dio:/adm$ <br>
+A usuária maria pertende ao grupo GRP_VEN, portanto não pode ver nem mesmo o conteúdo da pasta _adm_
+
+<br>
+Vamos fazer uma alteração apenas nas permissões da pasta _ven_ para que os usuários pertencentes ao grupo possam também gravar (w):
+
+Atual:
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   drwxr-xr-x   2 maria   GRP_VEN 4,0K ago 18 18:27 ven <br>
+
+<br>
+Alteração:
+
+>   root@ubuntu-srv-dio:/# chmod 775 /ven/ <br>
+>   root@ubuntu-srv-dio:/# ls -lh <br>
+>   drwxrwxr-x   2 maria   GRP_VEN 4,0K ago 18 18:27 ven <br>
+
+<br>
+Recapitulando:
+
+
+|1º dígito: |2º dígito: |3º dígito: |
+|:---: |:---: |:---: |
+|Dono |Usuários do grupo |Demais usuários |
+| 7	| 7	| 5	|
+| 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>1(execução) |
+| rwx | rwx | r-x |
+
+## Entendendo melhor as permissões de execução para scripts
 
