@@ -117,6 +117,8 @@ Adicionando um usuário a um ou mais grupos:
 
 >   root@ubuntu-srv-dio:/# usermod -G adm,sudo barbara
 
+<br>
+
 ## Criando novos grupos
 
 <br>
@@ -164,6 +166,8 @@ Para remover o usuário de um grupo específico:
 >   barbara: x :1007: <br>
 >   GRP_ADM: x :1008:rafaela,juliana,barbara <br>
 >   GRP_VEN: x :1009:maria,joao,barbara <br>
+
+<br>
 
 ## Conhecendo o sistema de permissões
 
@@ -222,6 +226,8 @@ Outro exemplo:
 >   drwxr-xr-x   2 maria   GRP_VEN 4,0K ago 18 >   18:27 ven <br>
 
 Aqui a dona do diretório agora é maria, o diretório pertence ao grupo GRP_VEN, apenas maria pode gravar no diretório, os demais usuários do grupo podem apenas ler e executar arquivos neste diretório.
+
+<br>
 
 ## Alterando as permissões de um diretório - arquivo
 
@@ -303,6 +309,8 @@ Recapitulando:
 | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>1(execução) |
 | 7	| 7	| 5	|
 | rwx | rwx | r-x |
+
+<br>
 
 ## Entendendo melhor as permissões de execução para scripts
 
