@@ -1,5 +1,7 @@
 # Gerenciando Usuários no Linux
 
+<br>
+
 ## Criando e excluindo usuários
 
 A maioria das tarefas em um ambiente de servidor precisa ser executada por um usuário com permissões mais altas, já para acesso a pastas de arquivos ou apesas utilizar serviços, não é necessário que o usuário tenha altas permissões. Aqui veremos as principais configurações de usuários.
@@ -47,6 +49,8 @@ Caso tenha se esquecido de definir o shell do usuário:
 
 >   root@ubuntu-srv-dio:/home# chsh -s /bin/bash joao
 
+<br>
+
 ## Editando informações do usuário
 
 <br>
@@ -71,6 +75,8 @@ Caso queira definir uma data específica de expiração de senha é só colocar 
 Ver os usuários criados no sistema:
 
 >   root@ubuntu-srv-dio:/# cat /etc/passwd
+
+<br>
 
 ## Shell Script - Criando usuários em lote
 
@@ -104,6 +110,8 @@ convidado2:senha123:19222:0:99999:7:::
 OBS: Você pode se deparar com algumas versões do server em que pode ser que seja necessário o parâmetro adicional -crypt:
 
    -p $(openssl passwd -crypt senha123)
+
+<br>
 
 ## Adicionando usuários a grupos
 

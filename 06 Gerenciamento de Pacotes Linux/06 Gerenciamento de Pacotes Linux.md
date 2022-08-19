@@ -5,8 +5,7 @@
 O que é um pacote?
 
 Pode ser um software, um driver ou codec de áudio e vídeo.
-
- <br>
+<br>
 O apt-get é um gerenciador de baixo nível, isso significa que  para se instalar algo, você precisa saber extamente o nome do pacote que quer instalar.
 
 >	root@ubuntu-srv-dio:/# apt-get --help <br>
@@ -111,3 +110,18 @@ Caso tenha a necessidade de instalar um paocte que esteja em um novo repositóri
 <br>
 
 ## Atualização do sistema operacional
+<br>
+Lembre-se sempre de efetuar o backup/snapshot antes de executar atualizações de sistema, seja Linux ou Windows. No nosso servidor o update é feito das maneira abaixo:
+
+> Primeiro, atualizar a lista de pacotes disponíveis: <br>
+> root@ubuntu-srv-dio:/# apt update <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;  apt update - update list of available packages <br>
+>
+> Em seguida, fazer a atualização de fato: <br>
+> root@ubuntu-srv-dio:/# apt upgrade <br>
+> &nbsp;&nbsp;&nbsp;&nbsp; apt upgrade - upgrade the system by installing/upgrading packages <br>
+
+<br>
+
+## Instalação de pacotes no ambiente Desktop
+<br>
