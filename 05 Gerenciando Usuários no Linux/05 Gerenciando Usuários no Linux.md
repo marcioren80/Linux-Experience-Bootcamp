@@ -306,3 +306,43 @@ Recapitulando:
 
 ## Entendendo melhor as permissões de execução para scripts
 
+<br>
+Vamos criar um script simples, apenas para demonstar o sistema de permissões de execução.
+
+>  root@ubuntu-srv-dio:/scripts# nano date.sh<br>
+>  \---------------------------------------------<br>
+>  #!/bin/bash<br>
+>  echo "Exibindo a data atual....."<br>
+>  date<br>
+>  \---------------------------------------------<br>
+>  root@ubuntu-srv-dio:/scripts# ls -l<br>
+>  **-rw-** r--r-- 1 root root  56 ago 19 13:21 date.sh<br>
+>  root@ubuntu-srv-dio:/scripts#<br>
+
+Como podemos ver, mesmo sendo o dono do arquivo, o usuário root não possui permissão para executar o arquivo date.sh:
+
+|Dono |Usuários do grupo |Demais usuários |
+|:---: |:---: |:---: |
+| rw- | r-- | r-- |
+| 4 Leitura (**r**) + <br> 2 Gravação (**w**) | 4 Leitura (**r**) | 4 Leitura (**r**)  |
+| 6	| 4	| 4	|
+
+<br>
+Podemos adicionar a permissão de execução de duas maneiras:
+
+>	root@ubuntu-srv-dio:/scripts# chmod 744 date.sh <br>
+>	ou <br>
+>	root@ubuntu-srv-dio:/scripts# chmod +x date.sh <br>
+>	root@ubuntu-srv-dio:/scripts# ls -l <br>
+>	-rwxr--r-- 1 root root  56 ago 19 13:21 date.sh <br>
+>	root@ubuntu-srv-dio:/scripts# <br>
+
+<br>
+Ou para remover as permissões novamente:
+
+>	root@ubuntu-srv-dio:/scripts# chmod 644 date.sh <br>
+>	ou <br>
+>	root@ubuntu-srv-dio:/scripts# chmod -x date.sh <br>
+>	root@ubuntu-srv-dio:/scripts# ls -l <br>
+>	-rw-r--r-- 1 root root  56 ago 19 13:21 date.sh <br>
+>	root@ubuntu-srv-dio:/scripts# <br>
