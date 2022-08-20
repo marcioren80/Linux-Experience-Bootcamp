@@ -4,9 +4,11 @@
 
 O que é um pacote?
 
-Pode ser um software, um driver ou codec de áudio e vídeo.
+Pode ser um software, um driver ou codec de áudio e vídeo. 
+
 <br>
-O apt-get é um gerenciador de baixo nível, isso significa que  para se instalar algo, você precisa saber extamente o nome do pacote que quer instalar.
+
+O **apt-get** é um gerenciador de baixo nível, isso significa que  para se instalar algo, você precisa saber extamente o nome do pacote que quer instalar.
 
 >	root@ubuntu-srv-dio:/# apt-get --help <br>
 >	apt 2.4.7 (amd64) <br>
@@ -44,10 +46,11 @@ O apt-get é um gerenciador de baixo nível, isso significa que  para se instala
 >	Package and version choices can be expressed via apt_preferences(5). <br>
 >	Security details are available in apt-secure(8). <br>
 >	Este APT tem Poderes de Super Vaca. <br>
->	root@ubuntu-srv-dio:/#
+>	root@ubuntu-srv-dio:/# <br>
 
 <br>
-Temos também o apt, que é uma atualização do apt-get e possui os seguintes recursos:
+
+Temos também o **apt**, que é uma atualização do apt-get e possui os seguintes recursos:
 
 >	root@ubuntu-srv-dio:/# apt --help <br>
 >	apt 2.4.7 (amd64) <br>
@@ -109,7 +112,7 @@ Caso tenha a necessidade de instalar um paocte que esteja em um novo repositóri
 
 <br>
 
-## Atualização do sistema operacional
+## Atualização dos aplicativos do sistema operacional
 <br>
 Lembre-se sempre de efetuar o backup/snapshot antes de executar atualizações de sistema, seja Linux ou Windows. No nosso servidor o update é feito das maneira abaixo:
 
@@ -122,6 +125,34 @@ Lembre-se sempre de efetuar o backup/snapshot antes de executar atualizações d
 > &nbsp;&nbsp;&nbsp;&nbsp; apt upgrade - upgrade the system by installing/upgrading packages <br>
 
 <br>
+Para realizar a atualização da versão do Ubuntu istalado:
+
+>	root@ubuntu-srv-dio:/# apt-get dist-upgrade <br>
+>	 &nbsp;&nbsp;&nbsp;&nbsp; dist-upgrade - Actualizar a distribuição, veja apt-get(8) <br>
 
 ## Instalação de pacotes no ambiente Desktop
 <br>
+No ambiente desktop Ubuntu, temos a loja de aplicativos, semelhante a loja de aplicativos do Windows:
+
+<img src="loja-ubuntu-software-01.png" width="640" height="480">
+
+<br>
+Para Instalar um aplicativo, basta pesquisar o aplicativo desejado:
+
+<img src="loja-ubuntu-software-02.png" width="640" height="480">
+
+<br>
+E clicar em instalar:
+
+<img src="loja-ubuntu-software-03.png" width="640" height="480">
+
+<br>
+Mas claro, também é possivel realizar a instalação através do nosso bom e velho terminal, a diferença é que via terminal podemos ver todas as dependências que serão instaladas junto com o pacote principal:
+
+<img src="apt-install-desk-term-01.png"> <br>
+<img src="apt-install-desk-term-02.png">
+
+<br>
+
+## Gerenciamento de pacotes (FEDORA RED HAT CenTOS)
+
