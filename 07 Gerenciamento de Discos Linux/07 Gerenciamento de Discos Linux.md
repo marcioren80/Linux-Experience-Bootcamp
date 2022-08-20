@@ -1,47 +1,52 @@
 # Gerenciamento de Discos Linux
+
 ## Discos, sistemas de arquivos e partições
 
-Tipos de tecnologias de discos:
-HDD: hard drive disk
-SSD: Solid State Disk
-NVMe: Non-Volatile Memory Express
+Tipos de tecnologias de discos: <br>
+HDD: hard drive disk <br>
+SSD: Solid State Disk <br>
+NVMe: Non-Volatile Memory Express <br>
 
-Sistema de arquivos: É a forma ou padrão como o sistema operacional irá controlar como os dados serão armazenados nos discos.
+<p>
+Sistema de arquivos: É a forma ou padrão como o sistema operacional irá controlar como os dados serão armazenados nos discos.</p>
 
 | Sistema Operacional | Sistema de arquivos |
-| :-----------------: | :-----------------: |
+| ------------------: | :------------------ |
 |        MacOS        |         HFS         |
 |     Unix/Linux      |   Ext3, Ext4, XFS   |
 |       Windows       |     FAT32, NTFS     |
 
-Particionamento:
+### Particionamento
+
 Divisão de um disco em partes, cada partição pode ter um sistema de arquivos diferente.
 
-Partições no Windows:
+### Partições no Windows
+
 Cada partição é reconhecida como uma unidade de disco independente.
 
-Partições no Linux
-No Linux, cada disco recebe um nome iniciado por *sd*
+### Partições no Linux
+
+No Linux, cada disco recebe um nome iniciado por *sd*: <br>
 sda, sdb, sdc
 
 <br>
 Cada partição será numerada da seguinte forma:<br>
 sda1, sda2, sdb1, sdb2 <br>
 
-root@ubuntu-srv-dio:/# lsblk
-NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-loop0                       7:0    0   62M  1 loop /snap/core20/1611
-loop1                       7:1    0   62M  1 loop /snap/core20/1593
-loop2                       7:2    0 79,9M  1 loop /snap/lxd/22923
-loop3                       7:3    0 44,7M  1 loop /snap/snapd/15534
-loop4                       7:4    0   47M  1 loop /snap/snapd/16292
-sda                         8:0    0   60G  0 disk
-├─sda1                      8:1    0    1M  0 part
-├─sda2                      8:2    0    2G  0 part /boot
-└─sda3                      8:3    0   58G  0 part
-  └─ubuntu--vg-ubuntu--lv 253:0    0   29G  0 lvm  /
-sr0                        11:0    1 1024M  0 rom
-root@ubuntu-srv-dio:/#
+> root@ubuntu-srv-dio:/# lsblk <br>
+> NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS <br>
+> loop0                       7:0    0   62M  1 loop /snap/core20/1611 <br>
+> loop1                       7:1    0   62M  1 loop /snap/core20/1593 <br>
+> loop2                       7:2    0 79,9M  1 loop /snap/lxd/22923 <br>
+> loop3                       7:3    0 44,7M  1 loop /snap/snapd/15534 <br>
+> loop4                       7:4    0   47M  1 loop /snap/snapd/16292 <br>
+> sda                         8:0    0   60G  0 disk <br>
+> ├─sda1                      8:1    0    1M  0 part <br>
+> ├─sda2                      8:2    0    2G  0 part /boot <br>
+> └─sda3                      8:3    0   58G  0 part <br>
+> └─ubuntu--vg-ubuntu--lv 253:0    0   29G  0 lvm  / <br>
+> sr0                        11:0    1 1024M  0 rom <br>
+> root@ubuntu-srv-dio:/#
 
 <br>
 
@@ -50,7 +55,7 @@ root@ubuntu-srv-dio:/#
 Como já vimos anteriormente, para visualizar discos e partições:
 marcio@ubuntu-srv-dio:~$ lsblk
 
-ou 
+ou
 
 root@ubuntu-srv-dio:/# fdisk -l
 Disk /dev/sda: 60 GiB, 64424509440 bytes, 125829120 sectors
@@ -171,7 +176,6 @@ Help:
    o   create a new empty DOS partition table
    s   create a new empty Sun partition table
 
-
 Command (m for help): n
 Partition type
    p   primary (0 primary, 0 extended, 4 free)
@@ -271,3 +275,36 @@ root@ubuntu-srv-dio:/disco2#
 <br>
 
 ## Montando discos automaticamente
+
+Quando criamos o ponto de montagem manualmente, caso o servidor reinicie, este ponto de montagem será perdido; para fazer com que o ponto de montagem carregue na inicialização precisamos configurá-lo no arquivo fstab:
+
+root@ubuntu-srv-dio:/# nano /etc/fstab
+
+# /etc/fstab: static file system information
+
+#
+
+# Use 'blkid' to print the universally unique identifier for a
+
+# device; this may be used with UUID= as a more robust way to name devices
+
+# that works even if disks are added and removed. See fstab(5)
+
+#
+
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+
+# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
+
+/dev/disk/by-id/dm-uuid-LVM-AvCxQVfyd9AwFTn45WTW4tcmXYXvITT9XIW7q8xBvDDN3rfn6rq3G0zcTZe7pbzU / ext4 defau>
+
+# /boot was on /dev/sda2 during curtin installation
+
+/dev/disk/by-uuid/a029a3db-6690-4657-8d18-6002d7b9e8ba /boot ext4 defaults 0 1
+/swap.img       none    swap    sw      0       0
+
+/dev/sdb /disco2 ext4 defaults 0 0 <<<<<<<<<<<<<<<<< adiciona assim
+
+Salva e reinicia.
+
+Pronto, o ponto de montagem será carregado na inicialização.
