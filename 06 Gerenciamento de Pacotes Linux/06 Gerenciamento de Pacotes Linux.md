@@ -7,7 +7,6 @@ O que é um pacote?
 Pode ser um software, um driver ou codec de áudio e vídeo. 
 
 <br>
-
 O **apt-get** é um gerenciador de baixo nível, isso significa que  para se instalar algo, você precisa saber extamente o nome do pacote que quer instalar.
 
 >	root@ubuntu-srv-dio:/# apt-get --help <br>
@@ -49,7 +48,6 @@ O **apt-get** é um gerenciador de baixo nível, isso significa que  para se ins
 >	root@ubuntu-srv-dio:/# <br>
 
 <br>
-
 Temos também o **apt**, que é uma atualização do apt-get e possui os seguintes recursos:
 
 >	root@ubuntu-srv-dio:/# apt --help <br>
@@ -113,6 +111,7 @@ Caso tenha a necessidade de instalar um paocte que esteja em um novo repositóri
 <br>
 
 ## Atualização dos aplicativos do sistema operacional
+--------------------------------------------------
 <br>
 Lembre-se sempre de efetuar o backup/snapshot antes de executar atualizações de sistema, seja Linux ou Windows. No nosso servidor o update é feito das maneira abaixo:
 
@@ -130,7 +129,10 @@ Para realizar a atualização da versão do Ubuntu istalado:
 >	root@ubuntu-srv-dio:/# apt-get dist-upgrade <br>
 >	 &nbsp;&nbsp;&nbsp;&nbsp; dist-upgrade - Actualizar a distribuição, veja apt-get(8) <br>
 
+<br>
+
 ## Instalação de pacotes no ambiente Desktop
+--------------------------------------------------
 <br>
 No ambiente desktop Ubuntu, temos a loja de aplicativos, semelhante a loja de aplicativos do Windows:
 
@@ -149,10 +151,40 @@ E clicar em instalar:
 <br>
 Mas claro, também é possivel realizar a instalação através do nosso bom e velho terminal, a diferença é que via terminal podemos ver todas as dependências que serão instaladas junto com o pacote principal:
 
-<img src="apt-install-desk-term-01.png"> <br>
-<img src="apt-install-desk-term-02.png">
+<img src="apt-install-desk-term-01.png" width="820" height="230"> <br>
+<img src="apt-install-desk-term-02.png" width="820" height="230">
 
 <br>
 
-## Gerenciamento de pacotes (FEDORA RED HAT CenTOS)
+## Gerenciamento de pacotes (FEDORA / RED HAT (RHEL) / CenTOS)
 
+<br>
+Nos sistemas RedHat based, existem dois genreciadores de pacotes:
+
+>	#dnf <br>
+>	&nbsp;&nbsp; (mais "user friendly")<br>
+>	ou o <br>
+>	#yum<br>
+>	&nbsp;&nbsp; (mais utilizado em scripts)
+
+<br>
+Exemplo dnf:
+
+>	#dnf search net-tools <br>
+>	#dnf install net-tools -y <br>
+>	#dnf remove net-tools <br>
+
+ <br>
+Exemplo yum:
+
+>   #yum install httpd
+
+ATENÇÃO: <br>
+O **dnf update** não precisa atualizar os repositórios antes.
+
+<br>
+
+## Realizando a instalação de arquivos DEB
+--------------------------------------------------
+<br>
+aa
