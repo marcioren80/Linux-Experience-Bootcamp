@@ -243,13 +243,13 @@ Agora vamos configurar permissões específicas para arquivos e pastas.
 
 Podemos fazer fazer a alteração das permissões utilizando o sistema de valores numéricos:
 
-|Permissão		|Valor	|
-| :---: 		| :---: |
-|               |       |
-|Leitura (R)	|   4	|
-|Gravação (W)	|   2	|
-|Execução (X)	|   1	|
-|Nenhuma		|   0	|
+|  Permissão   | Valor |
+| :----------: | :---: |
+|              |       |
+| Leitura (R)  |   4   |
+| Gravação (W) |   2   |
+| Execução (X) |   1   |
+|   Nenhuma    |   0   |
 
 <br>
 Vamos alterar as permissões de modo que outros usuários não tenham nenhum acesso ao diretório *adm*
@@ -260,12 +260,12 @@ Estado atual:
 
 >   root@ubuntu-srv-dio:/# chmod 750 /adm/ <br>
 
-| *1º Dígito:* | *2º Dígito:* | *3º Dígito:* |
-|:---: |:---: |:---: |
-|Dono |Usuários do grupo |Demais usuários |
-| 4 (leitura) + <br> 2 (gravação) + <br> 1 (execução) | 4(leitura) + <br> 1 (execução) | 0 (Nenhuma) |
-| 7	| 5	| 0	|
-| rwx | r-x | --- |
+|                    *1º Dígito:*                     |          *2º Dígito:*          |  *3º Dígito:*   |
+| :-------------------------------------------------: | :----------------------------: | :-------------: |
+|                        Dono                         |       Usuários do grupo        | Demais usuários |
+| 4 (leitura) + <br> 2 (gravação) + <br> 1 (execução) | 4(leitura) + <br> 1 (execução) |   0 (Nenhuma)   |
+|                          7                          |               5                |        0        |
+|                         rwx                         |              r-x               |       ---       |
 
 >   root@ubuntu-srv-dio:/# ls -lh <br>
 >   total 2,9G <br>
@@ -311,12 +311,12 @@ Alteração:
 <br>
 Recapitulando:
 
-| *1º Dígito:* | *2º Dígito:* | *3º Dígito:* |
-|:---: |:---: |:---: |
-|Dono |Usuários do grupo |Demais usuários |
+|                *1º Dígito:*                |                *2º Dígito:*                |        *3º Dígito:*        |
+| :----------------------------------------: | :----------------------------------------: | :------------------------: |
+|                    Dono                    |             Usuários do grupo              |      Demais usuários       |
 | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>2(gravação)+<br>1(execução) | 4(leitura)+<br>1(execução) |
-| 7	| 7	| 5	|
-| rwx | rwx | r-x |
+|                     7                      |                     7                      |             5              |
+|                    rwx                     |                    rwx                     |            r-x             |
 
 <br>
 
@@ -337,11 +337,11 @@ Vamos criar um script simples, apenas para demonstar o sistema de permissões de
 
 Como podemos ver, mesmo sendo o dono do arquivo, o usuário root não possui permissão para executar o arquivo date.sh:
 
-|Dono |Usuários do grupo |Demais usuários |
-|:---: |:---: |:---: |
-| rw- | r-- | r-- |
-| 4 Leitura (**r**) + <br> 2 Gravação (**w**) | 4 Leitura (**r**) | 4 Leitura (**r**)  |
-| 6	| 4	| 4	|
+|                    Dono                     | Usuários do grupo |  Demais usuários  |
+| :-----------------------------------------: | :---------------: | :---------------: |
+|                     rw-                     |        r--        |        r--        |
+| 4 Leitura (**r**) + <br> 2 Gravação (**w**) | 4 Leitura (**r**) | 4 Leitura (**r**) |
+|                      6                      |         4         |         4         |
 
 <br>
 Podemos adicionar a permissão de execução de duas maneiras:
