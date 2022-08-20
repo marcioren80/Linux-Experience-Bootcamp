@@ -43,6 +43,8 @@ sda                         8:0    0   60G  0 disk
 sr0                        11:0    1 1024M  0 rom
 root@ubuntu-srv-dio:/#
 
+<br>
+
 ## Adicionando um novo disco
 
 Como já vimos anteriormente, para visualizar discos e partições:
@@ -115,6 +117,8 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 root@ubuntu-srv-dio:/#
+
+<br>
 
 ## Particionando e formatando discos via terminal
 
@@ -226,3 +230,44 @@ Creating journal (65536 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 root@ubuntu-srv-dio:/#
+
+<br>
+
+## Montando e desmontando discos
+
+OK, criamos a partição e formatamos o disco, mas ele ainda não está disponível para uso???
+Para disponibilizar o disco para uso, precisamos montá-lo em um destino/diretório específico para montar discos. O diretório comum para isso é o /mnt/
+
+root@ubuntu-srv-dio:/# cd /mnt
+root@ubuntu-srv-dio:/mnt# mkdir disco2
+root@ubuntu-srv-dio:/mnt# ls
+disco2
+root@ubuntu-srv-dio:/mnt# pwd
+/mnt
+root@ubuntu-srv-dio:/mnt# mount /dev/sdb /mnt/disco2/
+root@ubuntu-srv-dio:/mnt#
+
+Pronto, agora temos acesso a partição crida no disco sdb e podemos gravar dados nela.
+root@ubuntu-srv-dio:/mnt# cd disco2/
+root@ubuntu-srv-dio:/mnt/disco2# ls -l
+total 16
+drwx------ 2 root root 16384 ago 20 12:19 lost+found
+root@ubuntu-srv-dio:/mnt/disco2# touch arquivo1.txt
+root@ubuntu-srv-dio:/mnt/disco2# touch arquivo2.txt
+root@ubuntu-srv-dio:/mnt/disco2#
+
+Se necessário fazer a desmontagem:
+root@ubuntu-srv-dio:/# umount /dev/sdb
+
+Desmontar a unidade não apaga os arquivos, apenas remove o acesso a ela.
+
+Podemos apontar a partição para um diretório diferente para acessá-lo
+root@ubuntu-srv-dio:/# mkdir /disco2/ ; mount /dev/sdb /disco2/
+root@ubuntu-srv-dio:/# cd /disco2
+root@ubuntu-srv-dio:/disco2# ls
+arquivo1.txt  arquivo2.txt  lost+found
+root@ubuntu-srv-dio:/disco2#
+
+<br>
+
+## Montando discos automaticamente
