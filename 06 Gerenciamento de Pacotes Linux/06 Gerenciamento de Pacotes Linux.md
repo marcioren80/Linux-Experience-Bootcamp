@@ -111,7 +111,7 @@ Caso tenha a necessidade de instalar um paocte que esteja em um novo repositóri
 <br>
 
 ## Atualização dos aplicativos do sistema operacional
---------------------------------------------------
+
 <br>
 Lembre-se sempre de efetuar o backup/snapshot antes de executar atualizações de sistema, seja Linux ou Windows. No nosso servidor o update é feito das maneira abaixo:
 
@@ -132,7 +132,7 @@ Para realizar a atualização da versão do Ubuntu istalado:
 <br>
 
 ## Instalação de pacotes no ambiente Desktop
---------------------------------------------------
+
 <br>
 No ambiente desktop Ubuntu, temos a loja de aplicativos, semelhante a loja de aplicativos do Windows:
 
@@ -185,6 +185,20 @@ O **dnf update** não precisa atualizar os repositórios antes.
 <br>
 
 ## Realizando a instalação de arquivos DEB
---------------------------------------------------
+
 <br>
-aa
+Diferente dos executáveis do Windows que tem como extensão .exe e .msi para instaladores de arquivos, no Linux temos as extensões .deb para sistemas Debian based e a extensão .rpm para RedHat based. <br>
+<br>
+Esses aplicativos podem ser instalados também via terminal ou duplo clique.
+
+<img src="deb-install-desk-term-01.png" width="460" height="225"> <br>
+
+Instalação via terminal: <br>
+<img src="deb-install-desk-term-02.2.png" width="750" height="480"> <br>
+
+Instalação padrão windows: <br>
+<img src="deb-install-desk-term-03.png" width="640" height="480"> <br>
+<img src="deb-install-desk-term-04.png" width="640" height="480"> <br>
+
+Diferente da instalação via terminal, o usuário não vê a instalação dos pacotes adicionais de dependência, apenas a porcentagem do progresso da instalação: <br>
+<img src="deb-install-desk-term-05.png" width="640" height="480"> <br>
