@@ -46,8 +46,3 @@ E cria um arquivo novo: <br>
 >         <h1>Este é um exemplo de site no servidor web.</h1> <br>
 >     </body> <br>
 >     </html> <br>
-
-<br>
-
-## Executando aplicações web em um servidor Linux
-
