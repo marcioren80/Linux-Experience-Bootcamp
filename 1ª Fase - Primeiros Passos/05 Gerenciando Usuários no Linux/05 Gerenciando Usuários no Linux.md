@@ -86,19 +86,30 @@ Vamos ver primeiro como podemos criar um usuário já com senha inicial definida
 >   root@ubuntu-srv-dio:/# useradd convidado1 -c "Convidado especial" -s /bin/bash -m -p $(openssl passwd senha123)
 
 <br>
+
+### DICA
 As vezes vejo nos fóruns o pessoal faz uma pergunta simples, em que a resposta deveria ser só uma linha de comando, duas no máximo, mas o pessoal "mais sênior" gosta de responder com scrits mirabolantes, muitas vezes já passando longo do nível de conhecimento de quem fez a pergunta. Não é menosprezar e superestimar, mas é começar pelo mais simples, aí se o usuário que perguntou estiver precisando de algo mais elaborado, aí sim partir para essas respostas com scritps cheios das firulas dos "do this" e "do that".
 
+Atualmente, a nova versão do openssl 3.0 removeu o -crypt, você pode usar outros tipos como:
+
+-1 (MD5) que é padrão
+
+-5 (SHA256)
+
+-6 (SHA512)
+
 <br>
-Ao montar um script, o admninstrador pode criar algo como:
+Na sua linha comando ficará assim escolhendo o padrão de criptografia (-1, -5, -6):
 
->   root@ubuntu-srv-dio:/# useradd convidado1 -c "Convidado especial" -s /bin/bash -m -p $(openssl passwd senha123)
-
-O parâmetro -p $(openssl passwd senha123) já passa a senha cryptografada.
+>  root@ubuntu-srv-dio:/# useradd convidado -m -s /bin/bash -p $(openssl passwd -1 123456)
 
 <br>
-useradd sem criptografia:
+ou usando como padrão o MD5.
 
->   root@ubuntu-srv-dio:/# useradd convidado2 -c "Convidado especial2" -s /bin/bash -m -p senha123
+>  root@ubuntu-srv-dio:/# useradd convidado -m -s /bin/bash -p $(openssl passwd senha123)
+
+
+Para mais informações sobre o openssl password, tem a seguinte documentação original: <https://www.openssl.org/docs/man3.0/man1/openssl-passwd.html>
 
 <br>
 Como podemos ver no resultado abaixo:
