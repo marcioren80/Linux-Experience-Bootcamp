@@ -61,7 +61,7 @@ Para o serviço smbd iniciar junto com o sistema:
 
 ## Configurando o acesso via máquina cliente
 
-No Windows podemos usar o "Mapear unidade de rede"
+No Windows podemos usar o "Mapear unidade de rede":
 
-\\\ip-remoto\nome-compartilhamento
+    \\ip-remoto\nome-compartilhamento
 
