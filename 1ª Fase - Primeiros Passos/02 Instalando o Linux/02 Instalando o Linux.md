@@ -1,6 +1,6 @@
 ## Distribuições utilizadas no curso
 
-![Tux, the Linux mascot](/png-transparent-tux-linux-vector-penguin-thumbnail.png)
+![Tux, the Linux mascot](png-transparent-tux-linux-vector-penguin-thumbnail.png)
 
 ### Baixando a ISO
 
@@ -63,5 +63,5 @@ Painel de Controle >> Programas e Recursos >> Ativar ou Desativar Recursos do Wi
 
 Vá para a Loja de Aplicativos do Windows e baixe o Ubuntu. Ele será instalado como se fosse um aplicativo normal.
 Abra o "aplicativo", configure usuário e senha se solicitar.
-![Ubuntu na Loja Microsoft](/ubuntu-ms-store.png)
+![Ubuntu na Loja Microsoft](ubuntu-ms-store.png)
 O WSL pode ser utilizado para a parte inicial do curso sem problemas.
